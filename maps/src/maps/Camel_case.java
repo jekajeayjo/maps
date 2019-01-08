@@ -27,50 +27,62 @@ public class Camel_case {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        int diapazon=25,randomNum;
+        String keyHash="";
         long in;
        long startTime = System.nanoTime(); 
        long forCreate,forSearch,forDelete;
-        HashMap<Integer, Double>hashMap=new HashMap<Integer, Double>();
+       String string="abcdefghijklmnopqrstuvwxyz";
+        HashMap<String, Double>hashMap=new HashMap<String, Double>();
         Random r1=new Random();
         Random r2=new Random();
         
         for (int i=0;i<100000;i++)
         {
-       hashMap.put(r1.nextInt(),new Double(r2.nextDouble()));
+            for (int k=0;k<10;k++)
+            {
+            randomNum=(int)(Math.random()*diapazon);
+            keyHash+=string.charAt(randomNum);
+            }
+            // System.out.println(" element "+keyHash);
+       hashMap.put(keyHash,new Double(r2.nextDouble()));
+       keyHash="";
         }
-        Set<Map.Entry<Integer,Double>> keySet=hashMap.entrySet();
+        Set<Map.Entry<String,Double>> keySet=hashMap.entrySet();
         System.out.println();
          forCreate=System.nanoTime();
          System.out.println("created Hash");
-        for (Map.Entry<Integer,Double>element:keySet)
+         
+        for (Map.Entry<String,Double>element:keySet)
         {
         System.out.print(element.getKey()+":");
         System.out.println(element.getValue());
         }
         forCreate=System.nanoTime();
         
-       
-        for (Map.Entry<Integer,Double>me:keySet)
-        {
-            in=me.getKey();
-            System.out.println("");
-           
-        if (in%2==0)
-        {
-            System.out.println("delete---"+in);
-            //System.out.println(hashMap.get(me));
-            hashMap.remove(me);
-        }
-        }
-        forDelete=System.nanoTime()-forCreate;
-       
-       System.out.println("all deleted");
-       hashMap.get(283176718);
-       startTime = System.nanoTime(); 
-        forSearch = System.nanoTime()-startTime; 
-        System.out.println("time of work "+startTime+", time of create "+forCreate+", time for delete "+forDelete+", ");
-        System.out.print("time of search "+forSearch);
-        System.out.println("---------------------");
+//         startTime=System.nanoTime();
+//        for (Map.Entry<String,Double>me:keySet)
+//        {
+//            in=me.getKey();
+//            System.out.println("");
+//           
+//        if (in%2==0)
+//        {
+//            System.out.println("delete---"+in);
+//            //System.out.println(hashMap.get(me));
+//            hashMap.remove(me);
+//        }
+//        }
+      
+//        forDelete=System.nanoTime()-startTime;
+//       
+//       System.out.println("all deleted");
+//        startTime = System.nanoTime(); 
+//       hashMap.get(283176718);  
+//        forSearch = System.nanoTime()-startTime; 
+//        System.out.println("time of work "+startTime+", time of create "+forCreate+", time for delete "+forDelete+", ");
+//        System.out.print("time of search "+forSearch+"\n");
+//        System.out.println("---------------------");
        
         
         

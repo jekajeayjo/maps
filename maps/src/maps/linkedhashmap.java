@@ -24,26 +24,44 @@ public class linkedhashmap {
     public static void main(String[] args) {
         // TODO code application logic here
          long startTime = System.nanoTime(); 
- 
+ long forCreate,forSearch,forDelete;
+  long in;
         Random r1=new Random(3);
         Random r2=new Random(3);
-    LinkedHashMap sm=new LinkedHashMap<Integer, Double>(); 
-    for (int i=0;i<1000;i++)
+    LinkedHashMap linkedHash=new LinkedHashMap<Integer, Double>(); 
+    for (int i=0;i<100000;i++)
         {
-        sm.put(r1.nextInt(),new Double(r2.nextDouble()));
+        linkedHash.put(r1.nextInt(),new Double(r2.nextDouble()));
         }
-          Set<Map.Entry<Integer,Double>> set=sm.entrySet();
-        for (Map.Entry<Integer,Double>me:set)
+         startTime = System.nanoTime(); 
+         forCreate=System.nanoTime()-startTime;
+         
+    Set<Map.Entry<Integer,Double>> keySet=linkedHash.entrySet();
+        for (Map.Entry<Integer,Double>me:keySet)
         {
         System.out.print(me.getKey()+":");
         System.out.println(me.getValue());
-        
         }
-        sm.put(12, 13);
-              System.out.println(sm.get(12)+" go delete");
-        System.out.println(sm.remove(12)+"delete");
         startTime = System.nanoTime(); 
-        System.out.println("time "+startTime);
+        System.out.println("linked hash map created "+startTime);
+         for (Map.Entry<Integer,Double>me:keySet)
+        {
+            in=me.getKey();
+            System.out.println("");       
+        if (in%2==0)
+        {
+            System.out.println("delete---"+in);
+            //System.out.println(hashMap.get(me));
+            linkedHash.remove(me);
+        }
+        }
+         forDelete=System.nanoTime()-startTime;
+         startTime = System.nanoTime(); 
+         linkedHash.get(1249241365);
+         forSearch=System.nanoTime()-startTime;
+         System.out.println("time of work "+startTime+", time of create "+forCreate+", time for delete "+forDelete+", ");
+        System.out.print("time of search "+forSearch+"\n");
+        System.out.println("---------------------");
     }
     
 }
