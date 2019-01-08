@@ -22,13 +22,9 @@ public class randomString {
           String string="abcdefghijklmnopqrstuvwxyz";
          
      
-          for (int k=0;k<10;k++)
-            {
-            randomNum=(int)(Math.random()*diapazon);
-            keyHash+=string.charAt(randomNum);
-            System.out.println("index "+randomNum+" element "+keyHash);
-            }
-          System.out.println(keyHash);
+         boolean b=string.contains("c");
+         System.out.println(b);
+                 
     }
     
 }
