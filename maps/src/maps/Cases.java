@@ -10,21 +10,21 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-
 /**
  *
  * @author User
  */
 public class Cases {
-     final int diapazon = 25;
-     int randomNum; 
-     String keyHash = "";
-String in;
-final String string = "abcdefghijklmnopqrstuvwxyz";
-   Random r2 = new Random();
-void put (Map  inputMap)
-{
- for (int i = 0; i < 100000; i++) {
+
+    final int diapazon = 25;
+    int randomNum;
+    String keyHash = "";
+    String in;
+    final String string = "abcdefghijklmnopqrstuvwxyz";
+    Random r2 = new Random();
+
+    void put(Map inputMap) {
+        for (int i = 0; i < 1000000; i++) {
             for (int k = 0; k < 10; k++) {
                 randomNum = (int) (Math.random() * diapazon);
                 keyHash += string.charAt(randomNum);
@@ -33,26 +33,27 @@ void put (Map  inputMap)
             inputMap.put(keyHash, new Double(r2.nextDouble()));
             keyHash = "";
         }
-}
-void show (Map inputMap)
-{
-Set<Map.Entry<String, Double>> keySet = inputMap.entrySet();
- for (Map.Entry<String, Double> element : keySet) {
+    }
+
+    void show(Map inputMap) {
+        Set<Map.Entry<String, Double>> keySet = inputMap.entrySet();
+        for (Map.Entry<String, Double> element : keySet) {
             System.out.print(element.getKey() + ":");
             System.out.println(element.getValue());
         }
-}
-   long delete(Map inputMap) {
+    }
+
+    long delete(Map inputMap) {
         long startTime = System.nanoTime();
         Set<Map.Entry<String, Double>> keySet1 = inputMap.entrySet();
-        
+
         for (Map.Entry<String, Double> me : keySet1) {
             System.out.println("");
-             in = me.getKey();
-            if (in.contains("yie")) {             
+            in = me.getKey();
+            if (in.contains("yiqtrbmhnv")) {
                 inputMap.remove(me);
             }
         }
-        return System.nanoTime()-startTime;
+        return System.nanoTime() - startTime;
     }
 }

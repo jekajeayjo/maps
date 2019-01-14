@@ -25,30 +25,43 @@ public class Camel_case {
      * @param args the command line arguments
      */
     public void delete() {
-
+        
     }
-
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Cases colection = new Cases();
         long startTime = System.nanoTime();
+        long descryptiontime;
         HashMap<String, Double> hashMap = new HashMap<String, Double>();
         TreeMap<String, Double> treeMap = new TreeMap<String, Double>();
         LinkedHashMap<String, Double> linkedHash = new LinkedHashMap<String, Double>();
         Random r2 = new Random();
         //put elements to hashMap
         colection.put(hashMap);
-        
         treeMap.putAll(hashMap);
         linkedHash.putAll(hashMap);
+       // colection.show(hashMap);
         System.out.println("created Treemap and LinkedHashMap");
         startTime = System.nanoTime();
         //delete from hashmap
-        long c = colection.delete(hashMap);
-        System.out.println(c + "------------------------");
-     c = colection.delete(linkedHash);
- System.out.println(c + "------------------------");
-  c=colection.delete(treeMap);
+        long testforDelete = colection.delete(hashMap);
+        System.out.println(testforDelete+ "------------------------hashMap");
+        testforDelete = colection.delete(linkedHash);
+        System.out.println(testforDelete + "------------------------linkedhashMap");
+        testforDelete = colection.delete(treeMap);
+           System.out.println(testforDelete + "------------------------treeMap");
+           System.out.println("process for Search");
+           startTime=System.nanoTime();
+           treeMap.get("yiqtrbmhnv");
+           descryptiontime=System.nanoTime()-startTime;
+           System.out.println("time for search of treemap="+descryptiontime);
+            hashMap.get("yiqtrbmhnv");
+           descryptiontime=System.nanoTime()-startTime;
+           System.out.println("time for search of hashmap="+descryptiontime);
+            linkedHash.get("yiqtrbmhnv");
+           descryptiontime=System.nanoTime()-startTime;
+           System.out.println("time for search of linkedHash="+descryptiontime);
     }
-
+    
 }
